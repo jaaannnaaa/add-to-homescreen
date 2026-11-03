@@ -774,28 +774,55 @@ export function AddToHomeScreen(
       _genListItem(
         `1`,
         i18n.__(
-          "Tap the %s button in the toolbar.",
+          "Tap %s in the toolbar.",
           _genListButtonWithImage(
-            _genAssetUrl("ios-safari-sharing-api-button-2.svg")
+            _genAssetUrl("ios-safari-ios26-more-white-button.svg")
           )
-        ) +
-          ` <span class="adhs-emphasis">${i18n.__(
-            "You may need to scroll or tap More to find Share."
-          )}</span>`
+        )
       ) +
       _genListItem(
         `2`,
+        i18n.__(
+          "Tap %s",
+          _genListButtonWithImage(
+            _genAssetUrl("ios-safari-ios26-more-grey-arrow-button.svg"),
+            i18n.__("View More"),
+            "left"
+          )
+        )
+      ) +
+      _genListItem(
+        `3`,
+        i18n.__(
+          "Tap %s in the menu.",
+          _genListButtonWithImage(
+            _genAssetUrl("ios-safari-ios26-share-button.svg"),
+            i18n.__("Share"),
+            "left"
+          )
+        )
+      ) +
+      _genListItem(
+        `4`,
+        i18n.__(
+          "Tap %s",
+          _genListButtonWithImage(
+            _genAssetUrl("ios-safari-ios26-more-grey-arrow-button.svg"),
+            i18n.__("View More"),
+            "left"
+          )
+        )
+      ) +
+      _genListItem(
+        `5`,
         i18n.__(
           "Select %s from the menu.",
           _genListButtonWithImage(
             _genAssetUrl("ios-safari-add-to-home-screen-button-2.svg"),
             i18n.__("Add to Home Screen"),
-            "right"
+            "left"
           )
-        ) +
-          ` <span class="adhs-emphasis">${i18n.__(
-            "You may need to scroll down to find this menu item."
-          )}</span>`
+        )
       ) +
       _genListEnd() +
       _genBlurbMobile() +
