@@ -1,3 +1,5 @@
+Fork note: to change this library and use it from an app, see [APPLY.md](APPLY.md).
+
 # Add-to-Homescreen 📱💻
 [![Live Demo](https://img.shields.io/badge/Live-Demo-green)](https://philfung.github.io/adhs)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
