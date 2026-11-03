@@ -196,6 +196,14 @@ export function AddToHomeScreen(
           );
 
           _genIOSChrome(container);
+        } else if (isBrowserIOSFirefox()) {
+          ret = new DeviceInfo(
+            (_isStandAlone = false),
+            (_canBeStandAlone = true),
+            (_device = _device)
+          );
+
+          _genIOSFirefox(container);
         } else if (
           isBrowserIOSInAppFacebook() 
           || isBrowserIOSInAppLinkedin()
@@ -245,7 +253,6 @@ export function AddToHomeScreen(
             (_device = _device)
           );
           _genAndroidEdge(container);
-          // Firefox: note only Android Firefox supports adding to homescreen, ios Firefox does not
         } else if (isBrowserAndroidFirefox()) {
           ret = new DeviceInfo(
             (_isStandAlone = false),
@@ -756,6 +763,45 @@ export function AddToHomeScreen(
     </div>` : '');
     container.innerHTML = containerInnerHTML;
     container.classList.add("adhs-mobile", "adhs-ios", "adhs-safari");
+  }
+
+  function _genIOSFirefox(container: HTMLElement) {
+    var containerInnerHTML =
+      _genModalStart() +
+      _genInstallAppHeader() +
+      _genAppNameHeader() +
+      _genListStart() +
+      _genListItem(
+        `1`,
+        i18n.__(
+          "Tap the %s button in the toolbar.",
+          _genListButtonWithImage(
+            _genAssetUrl("ios-safari-sharing-api-button-2.svg")
+          )
+        ) +
+          ` <span class="adhs-emphasis">${i18n.__(
+            "You may need to scroll or tap More to find Share."
+          )}</span>`
+      ) +
+      _genListItem(
+        `2`,
+        i18n.__(
+          "Select %s from the menu.",
+          _genListButtonWithImage(
+            _genAssetUrl("ios-safari-add-to-home-screen-button-2.svg"),
+            i18n.__("Add to Home Screen"),
+            "right"
+          )
+        ) +
+          ` <span class="adhs-emphasis">${i18n.__(
+            "You may need to scroll down to find this menu item."
+          )}</span>`
+      ) +
+      _genListEnd() +
+      _genBlurbMobile() +
+      _genModalEnd();
+    container.innerHTML = containerInnerHTML;
+    container.classList.add("adhs-mobile", "adhs-ios", "adhs-firefox");
   }
 
   function _genIOSSafariIOS26(container: HTMLElement) {

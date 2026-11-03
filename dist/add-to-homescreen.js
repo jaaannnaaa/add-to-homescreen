@@ -149,6 +149,10 @@ function AddToHomeScreen(options) {
                     ret = new types_1.DeviceInfo((_isStandAlone = false), (_canBeStandAlone = true), (_device = _device));
                     _genIOSChrome(container);
                 }
+                else if (isBrowserIOSFirefox()) {
+                    ret = new types_1.DeviceInfo((_isStandAlone = false), (_canBeStandAlone = true), (_device = _device));
+                    _genIOSFirefox(container);
+                }
                 else if (isBrowserIOSInAppFacebook()
                     || isBrowserIOSInAppLinkedin()
                     || isBrowserIOSInAppInstagram()) {
@@ -176,7 +180,6 @@ function AddToHomeScreen(options) {
                 else if (isBrowserAndroidEdge()) {
                     ret = new types_1.DeviceInfo((_isStandAlone = false), (_canBeStandAlone = true), (_device = _device));
                     _genAndroidEdge(container);
-                    // Firefox: note only Android Firefox supports adding to homescreen, ios Firefox does not
                 }
                 else if (isBrowserAndroidFirefox()) {
                     ret = new types_1.DeviceInfo((_isStandAlone = false), (_canBeStandAlone = true), (_device = _device));
@@ -564,6 +567,21 @@ function AddToHomeScreen(options) {
     </div>` : '');
         container.innerHTML = containerInnerHTML;
         container.classList.add("adhs-mobile", "adhs-ios", "adhs-safari");
+    }
+    function _genIOSFirefox(container) {
+        var containerInnerHTML = _genModalStart() +
+            _genInstallAppHeader() +
+            _genAppNameHeader() +
+            _genListStart() +
+            _genListItem(`1`, simpleI18n_1.default.__("Tap the %s button in the toolbar.", _genListButtonWithImage(_genAssetUrl("ios-safari-sharing-api-button-2.svg"))) +
+                ` <span class="adhs-emphasis">${simpleI18n_1.default.__("You may need to scroll or tap More to find Share.")}</span>`) +
+            _genListItem(`2`, simpleI18n_1.default.__("Select %s from the menu.", _genListButtonWithImage(_genAssetUrl("ios-safari-add-to-home-screen-button-2.svg"), simpleI18n_1.default.__("Add to Home Screen"), "right")) +
+                ` <span class="adhs-emphasis">${simpleI18n_1.default.__("You may need to scroll down to find this menu item.")}</span>`) +
+            _genListEnd() +
+            _genBlurbMobile() +
+            _genModalEnd();
+        container.innerHTML = containerInnerHTML;
+        container.classList.add("adhs-mobile", "adhs-ios", "adhs-firefox");
     }
     function _genIOSSafariIOS26(container) {
         var containerInnerHTML = _genModalStart() +
@@ -1214,7 +1232,7 @@ module.exports = JSON.parse('{"Add to Home Screen":"حفظ الى الرئيسي
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"Add to Home Screen":"Přidat na plochu","Add To Dock":"Přidat do Docku","An icon will be added to your Dock so you can quickly access this website.":"Ikona bude přidána do vašeho Docku, abyste měli rychlý přístup k této webové stránce.","An icon will be added to your home screen so you can quickly access this website.":"Ikona bude přidána na vaši domovskou obrazovku, abyste měli rychlý přístup k této webové stránce.","An icon will be added to your Taskbar so you can quickly access this website.":"Ikona bude přidána na váš panel úloh, abyste měli rychlý přístup k této webové stránce.","Install":"Instalovat","Install %s":"Instalovat %s","Install and create shortcut":"Nainstalovat a vytvořit zástupce","Install app":"Instalovat aplikaci","Later":"Později","Open in browser":"Otevřít v prohlížeči","Select %s from the menu that pops up.":"Vyberte %s z nabídky, která se zobrazí.","Select %s from the menu.":"Vyberte %s z nabídky.","Share":"Sdílet","Tap":"Klepněte na","Tap %s":"Klepněte na %s","Tap %s in the browser bar.":"Klepněte na %s v panelu prohlížeče.","Tap %s in the menu.":"Klepněte na %s v nabídce.","Tap %s in the toolbar.":"Klepněte na %s v panelu nástrojů.","Tap the %s button above.":"Klepněte na tlačítko %s výše.","Tap the %s button below to open your system browser.":"Klepněte na tlačítko %s níže pro otevření systémového prohlížeče.","Tap the %s button in the toolbar.":"Klepněte na tlačítko %s v panelu nástrojů.","Tap the %s button in the upper right corner.":"Klepněte na tlačítko %s v pravém horním rohu.","View More":"Zobrazit více","You may need to scroll down to find this menu item.":"Možná budete muset posunout dolů, abyste tuto položku nabídky našli."}');
+module.exports = JSON.parse('{"Add to Home Screen":"Přidat na plochu","Add To Dock":"Přidat do Docku","An icon will be added to your Dock so you can quickly access this website.":"Ikona bude přidána do vašeho Docku, abyste měli rychlý přístup k této webové stránce.","An icon will be added to your home screen so you can quickly access this website.":"Ikona bude přidána na vaši domovskou obrazovku, abyste měli rychlý přístup k této webové stránce.","An icon will be added to your Taskbar so you can quickly access this website.":"Ikona bude přidána na váš panel úloh, abyste měli rychlý přístup k této webové stránce.","Install":"Instalovat","Install %s":"Instalovat %s","Install and create shortcut":"Nainstalovat a vytvořit zástupce","Install app":"Instalovat aplikaci","Later":"Později","Open in browser":"Otevřít v prohlížeči","Select %s from the menu that pops up.":"Vyberte %s z nabídky, která se zobrazí.","Select %s from the menu.":"Vyberte %s z nabídky.","Share":"Sdílet","Tap":"Klepněte na","Tap %s":"Klepněte na %s","Tap %s in the browser bar.":"Klepněte na %s v panelu prohlížeče.","Tap %s in the menu.":"Klepněte na %s v nabídce.","Tap %s in the toolbar.":"Klepněte na %s v panelu nástrojů.","Tap the %s button above.":"Klepněte na tlačítko %s výše.","Tap the %s button below to open your system browser.":"Klepněte na tlačítko %s níže pro otevření systémového prohlížeče.","Tap the %s button in the toolbar.":"Klepněte na tlačítko %s v panelu nástrojů.","Tap the %s button in the upper right corner.":"Klepněte na tlačítko %s v pravém horním rohu.","View More":"Zobrazit více","You may need to scroll down to find this menu item.":"Možná budete muset posunout dolů, abyste tuto položku nabídky našli.","You may need to scroll or tap More to find Share.":"Možná budete muset posunout dolů nebo klepnout na Více, abyste našli Sdílet."}');
 
 /***/ }),
 
@@ -1238,7 +1256,7 @@ module.exports = JSON.parse('{"Add to Home Screen":"Zum Home-Bildschirm","Add To
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"Add to Home Screen":"Add to Home Screen","Add To Dock":"Add To Dock","An icon will be added to your Dock so you can quickly access this website.":"An icon will be added to your Dock so you can quickly access this website.","An icon will be added to your home screen so you can quickly access this website.":"An icon will be added to your home screen so you can quickly access this website.","An icon will be added to your Taskbar so you can quickly access this website.":"An icon will be added to your Taskbar so you can quickly access this website.","Install":"Install","Install %s":"Install %s","Install and create shortcut":"Install and create shortcut","Install app":"Install app","Later":"Later","Open in browser":"Open in browser","Select %s from the menu that pops up.":"Select %s from the menu that pops up.","Select %s from the menu.":"Select %s from the menu.","Share":"Share","Tap":"Tap","Tap %s":"Tap %s","Tap %s in the browser bar.":"Tap %s in the browser bar.","Tap %s in the menu.":"Tap %s in the menu.","Tap %s in the toolbar.":"Tap %s in the toolbar.","Tap the %s button above.":"Tap the %s button above.","Tap the %s button below to open your system browser.":"Tap the %s button below to open your system browser.","Tap the %s button in the toolbar.":"Tap the %s button in the toolbar.","Tap the %s button in the upper right corner.":"Tap the %s button in the upper right corner.","View More":"View More","You may need to scroll down to find this menu item.":"You may need to scroll down to find this menu item."}');
+module.exports = JSON.parse('{"Add to Home Screen":"Add to Home Screen","Add To Dock":"Add To Dock","An icon will be added to your Dock so you can quickly access this website.":"An icon will be added to your Dock so you can quickly access this website.","An icon will be added to your home screen so you can quickly access this website.":"An icon will be added to your home screen so you can quickly access this website.","An icon will be added to your Taskbar so you can quickly access this website.":"An icon will be added to your Taskbar so you can quickly access this website.","Install":"Install","Install %s":"Install %s","Install and create shortcut":"Install and create shortcut","Install app":"Install app","Later":"Later","Open in browser":"Open in browser","Select %s from the menu that pops up.":"Select %s from the menu that pops up.","Select %s from the menu.":"Select %s from the menu.","Share":"Share","Tap":"Tap","Tap %s":"Tap %s","Tap %s in the browser bar.":"Tap %s in the browser bar.","Tap %s in the menu.":"Tap %s in the menu.","Tap %s in the toolbar.":"Tap %s in the toolbar.","Tap the %s button above.":"Tap the %s button above.","Tap the %s button below to open your system browser.":"Tap the %s button below to open your system browser.","Tap the %s button in the toolbar.":"Tap the %s button in the toolbar.","Tap the %s button in the upper right corner.":"Tap the %s button in the upper right corner.","View More":"View More","You may need to scroll down to find this menu item.":"You may need to scroll down to find this menu item.","You may need to scroll or tap More to find Share.":"You may need to scroll or tap More to find Share."}');
 
 /***/ }),
 
