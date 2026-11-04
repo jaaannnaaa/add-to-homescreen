@@ -260,6 +260,13 @@ export function AddToHomeScreen(
             (_device = _device)
           );
           _genAndroidFirefox(container);
+        } else if (isBrowserAndroidOpera()) {
+          ret = new DeviceInfo(
+            (_isStandAlone = false),
+            (_canBeStandAlone = true),
+            (_device = _device)
+          );
+          _genAndroidOpera(container);
         } else if (isBrowserAndroidFacebook() || isBrowserAndroidInstagram()) {
           // ANDROID FACEBOOK: https://github.com/user-attachments/assets/45701ac3-d337-4fc4-8e82-3d03236bf3a5
           // ANDROID INSTAGRAM: https://github.com/user-attachments/assets/7e1d11fd-31ba-4b27-a13d-6beb079b4204
@@ -1202,7 +1209,113 @@ export function AddToHomeScreen(
   }
 
   function _genAndroidFirefox(container: HTMLElement) {
-    return _genAndroidChrome(container);
+    var containerInnerHTML =
+      _genModalStart() +
+      _genInstallAppHeader() +
+      _genAppNameHeader() +
+      _genListStart() +
+      _genListItem(
+        `1`,
+        i18n.__(
+          "Tap %s in the toolbar.",
+          _genListButtonWithImage(
+            _genAssetUrl("android-chrome-more-button-2.svg")
+          )
+        )
+      ) +
+      _genListItem(
+        `2`,
+        i18n.__(
+          "Tap %s",
+          _genListButtonWithImage(
+            _genAssetUrl("ios-safari-ios26-more-grey-arrow-button.svg"),
+            i18n.__("View More"),
+            "left"
+          )
+        )
+      ) +
+      _genListItem(
+        `3`,
+        i18n.__(
+          "Tap %s in the menu.",
+          _genListButtonWithImage(
+            _genAssetUrl("ios-safari-add-to-home-screen-button-2.svg"),
+            i18n.__("Add app to Home screen"),
+            "left"
+          )
+        )
+      ) +
+      _genListItem(
+        `4`,
+        i18n.__(
+          "Tap %s",
+          _genListButtonWithImage(
+            _genAssetUrl("ios-safari-add-to-home-screen-button-2.svg"),
+            i18n.__("Add automatically"),
+            "left"
+          )
+        )
+      ) +
+      _genListEnd() +
+      _genBlurbMobile() +
+      _genModalEnd();
+    container.innerHTML = containerInnerHTML;
+    container.classList.add("adhs-mobile", "adhs-android", "adhs-firefox");
+  }
+
+  function _genAndroidOpera(container: HTMLElement) {
+    var containerInnerHTML =
+      _genModalStart() +
+      _genInstallAppHeader() +
+      _genAppNameHeader() +
+      _genListStart() +
+      _genListItem(
+        `1`,
+        i18n.__(
+          "Tap %s in the toolbar.",
+          _genListButtonWithImage(
+            _genAssetUrl("android-chrome-more-button-2.svg")
+          )
+        )
+      ) +
+      _genListItem(
+        `2`,
+        i18n.__(
+          "Tap %s in the menu.",
+          _genListButtonWithImage(
+            _genAssetUrl("ios-safari-add-to-home-screen-button-2.svg"),
+            i18n.__("Add to"),
+            "left"
+          )
+        )
+      ) +
+      _genListItem(
+        `3`,
+        i18n.__(
+          "Tap %s",
+          _genListButtonWithImage(
+            _genAssetUrl("ios-safari-add-to-home-screen-button-2.svg"),
+            i18n.__("Home screen"),
+            "left"
+          )
+        )
+      ) +
+      _genListItem(
+        `4`,
+        i18n.__(
+          "Tap %s",
+          _genListButtonWithImage(
+            _genAssetUrl("ios-safari-add-to-home-screen-button-2.svg"),
+            i18n.__("Add automatically"),
+            "left"
+          )
+        )
+      ) +
+      _genListEnd() +
+      _genBlurbMobile() +
+      _genModalEnd();
+    container.innerHTML = containerInnerHTML;
+    container.classList.add("adhs-mobile", "adhs-android", "adhs-opera");
   }
 
   function _genAndroidEdge(container: HTMLElement) {
@@ -1571,6 +1684,7 @@ export function AddToHomeScreen(
     isBrowserAndroidChrome,
     isBrowserAndroidFacebook,
     isBrowserAndroidFirefox,
+    isBrowserAndroidOpera,
     isBrowserAndroidSamsung,
     isBrowserIOSChrome,
     isBrowserIOSFirefox,

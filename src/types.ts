@@ -87,6 +87,7 @@ export interface AddToHomeScreenType {
   isBrowserAndroidFacebook: () => boolean;
   isBrowserAndroidSamsung: () => boolean;
   isBrowserAndroidFirefox: () => boolean;
+  isBrowserAndroidOpera: () => boolean;
   isDesktopWindows: () => boolean;
   isDesktopMac: () => boolean;
   isDesktopChrome: () => boolean;
